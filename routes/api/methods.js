@@ -2,7 +2,7 @@
 /*----------------------Declaracion Variables/Archivos-------------------------*/
 
 const Notification = require("./notification.js");
-const User = require('../../models/User');
+const User = require('../../models/user');
 const Dni = require('../../models/Dni');
 const Especialidad = require('../../models/Especialidad');
 const ConsultaGrupo = require('../../models/ConsultaGrupo');
