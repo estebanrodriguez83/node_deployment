@@ -14,12 +14,10 @@ const db = require('./config/keys').MongoURI;
 app.use(cors({origin: 'http://localhost:3000'})); 
 //Hacer Cors Para Android 
 
-require('dotenv').config({path: 'variables.env'});
 //Connect to Mongo
-mongoose.Promise= global.Promise;
-mongoose.connect(process.env.DB_URL, {
-    useNewUrlParser: true
-})
+mongoose.connect(db,{useNewUrlParser: true})
+    .then(() => console.log('MongoDB Connected'))
+    .catch(err => console.log(err));
 
 
 // BodyParser
@@ -34,8 +32,5 @@ app.use(morgan('dev'));
 
 
 //App Listening Selected Port
-const host = process.env.HOST || '0.0.0.0';
-const port = process.env.PORT || 3000; //Selected Port Number 5000
-app.listen(port,host, ()=> {
-    console.log('El servidor esta funcionando')
-});
+const port = process.env.PORT || 3000; //Selected Port Number
+app.listen(port,console.log(`Server Running ${port}`));
