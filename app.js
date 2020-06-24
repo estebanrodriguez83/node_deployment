@@ -8,14 +8,14 @@ const cors = require('cors');
 
 
 //DB Config Connection String File
-const db = require('./config/keys').MongoURI;
+const db = 'mongodb+srv://mongoatlaspf:mongodbcloud@pf-db-w2rmt.mongodb.net/test?retryWrites=true&w=majority'
 
 //CORS 
 app.use(cors({origin: 'http://localhost:3000'})); 
 //Hacer Cors Para Android 
 
 //Connect to Mongo
-mongoose.connect(db,{useNewUrlParser: true})
+mongoose.connect(db,{useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
 
@@ -33,4 +33,4 @@ app.use(morgan('dev'));
 
 //App Listening Selected Port
 const port = process.env.PORT || 3000; //Selected Port Number
-app.listen(port,console.log(`Server Running pruebaa ${port}`));
+app.listen(port,console.log(`Server Running ${port}`));
